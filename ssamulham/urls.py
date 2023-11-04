@@ -25,7 +25,8 @@ urlpatterns = [
     # 회원가입
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    
+    path('', include('allauth.urls')),
+
     # 디버깅 툴바
     path('__debug__/', include('debug_toolbar.urls')),
 ]
