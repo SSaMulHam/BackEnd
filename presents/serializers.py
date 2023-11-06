@@ -25,7 +25,8 @@ class PresentLikeSerializer(serializers.ModelSerializer):
         model = Present
         fields = '__all__'
 
-class CateTagSerializer(serializers.ModelSerializer):
+
+class CommentLikeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Present
+        model = PresentComment
         fields = '__all__'

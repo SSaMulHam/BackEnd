@@ -8,8 +8,8 @@ urlpatterns = [
     path('post/<int:pk>/', views.PresentRetrieveAPIView.as_view(), name='post_detail'),
     # 댓글 생성
     path('comment/', views.CommentCreateAPIView.as_view(), name='comment_create'),
-    # 좋아요 생성
+    # 선물 좋아요 생성
     path('post/<int:pk>/like/', views.PresentLikeCreateAPIView.as_view(), name='post-like'),
-    # 카테고리 
-    path('catetag/', views.CateTagAPIView.as_view(), name='catetag'),
+    # 댓글 좋아요 생성
+    path('comment/<int:pk>/like/', views.CommentLikeCreateAPIView.as_view(), name='comment-like'),
 ]
