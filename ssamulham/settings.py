@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # my_app
     'presents',
     'shops',
+    'accounts',
     
     # thrid_party
     'bootstrap5',
