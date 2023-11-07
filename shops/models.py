@@ -11,9 +11,21 @@ class Shop(models.Model):
     
     # fields
     place = models.TextField()
+    # 오프라인 관련 필드 삭제 ?
     is_online = models.BooleanField() # 1: 온라인, 0: 오프라인
     openhour = models.TextField()
     tel = models.CharField(max_length=255)
+    score = models.IntegerField(null=True, default=0)
+
+    like_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='like_shop'
+    )
+    dislike_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='dislike_shop'
+    )
+    
 
     
 
