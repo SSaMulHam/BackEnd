@@ -17,15 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('shops/', include('shops.urls')),
-    # path('presents/', include('presents.urls')),
+    path('shops/', include('shops.urls')),
+    path('presents/', include('presents.urls')),
     
     # 회원가입
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('accounts/', include('accounts.urls')),
     
     # 디버깅 툴바
     path('__debug__/', include('debug_toolbar.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
