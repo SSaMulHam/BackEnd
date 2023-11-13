@@ -14,14 +14,7 @@ urlpatterns = [
     # shoplike
     path('<int:pk>/like/', views.ShopLikeAPIView.as_view(), name='shop-like'),
 
-    # shopdislike
-    path('<int:pk>/dislike/', views.ShopDislikeAPIView.as_view(), name='shop-dislike'),
-
-    # # shopcommentlike
-    # path('shopcomment/<int:pk>/like/', views.ShopCommentLikeAPIView.as_view(), name='shopcomment-like'),
-
-    # # shopcommentsdislike
-    # path('shopcomment/<int:pk>/dislike/', views.ShopCommentDislikeAPIView.as_view(), name='shopcomment-dislike'),
-
+    # shopcommentlike
+    path('shopcomment/<int:pk>/like/', views.ShopCommentLikeAPIView.as_view(), name='shopcomment-like'),
 
 ]

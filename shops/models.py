@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 class Shop(models.Model):
@@ -8,24 +9,14 @@ class Shop(models.Model):
         settings.AUTH_USER_MODEL,
         related_name='like_shops'
     ) 
-    
     # fields
-    place = models.TextField()
-    # 오프라인 관련 필드 삭제 ?
-    is_online = models.BooleanField() # 1: 온라인, 0: 오프라인
-    openhour = models.TextField()
+    place = models.TextField() # place : 브랜드 네임
+    # openhour = models.TextField()
     tel = models.CharField(max_length=255)
-    score = models.IntegerField(null=True, default=0)
+    # validator활용하여 평점 0~5점만 줄 수 있도록 설정
+    score = models.IntegerField(null=True, default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
 
-    like_users = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        related_name='like_shop'
-    )
-    dislike_users = models.ManyToManyField(
-        settings.AUTH_USER_MODEL,
-        related_name='dislike_shop'
-    )
-    
+
 
     
 
@@ -34,12 +25,10 @@ class Shop(models.Model):
 class ShopComment(models.Model):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE, related_name='shops')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    
     like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         related_name='like_shop_comments'
     )
-    
     # fields
     content = models.TextField()
-    score = models.IntegerField()
+    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])

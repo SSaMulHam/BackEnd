@@ -31,21 +31,12 @@ class ShopLikeAPIView(GenericAPIView):
         instance.save()
         return Response(instance.like)
 
-class ShopDislikeAPIView(GenericAPIView):
-    queryset = Shop.objects.all()
 
+class ShopCommentLikeAPIView(GenericAPIView):
+    queryset = ShopComment.objects.all()
+    
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
-        instance.dislike_users += 1
+        instance.like += 1
         instance.save()
-        return Response(instance.dislike_users)
-
-
-# class ShopCommentLikeAPIView(GenericAPIView):
-#     queryset = ShopComment.objects.all()
-#     serializer_class = ShopCommentSerializer
-
-
-# class ShopCommentDislikeAPIView(GenericAPIView):
-#     queryset = ShopComment.objects.all()
-#     serializer_class = ShopCommentSerializer
+        return Response(instance.like)
