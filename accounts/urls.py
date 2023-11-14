@@ -5,6 +5,7 @@ app_name='accounts'
 urlpatterns = [
     # 로그인
     path('', include('rest_auth.urls')),
+    path('', include('allauth.urls')),
     # 회원가입 
     path('registration/', include('rest_auth.registration.urls')),
     # 프로필

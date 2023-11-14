@@ -68,6 +68,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     # 디버깅 툴바
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     # django
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
