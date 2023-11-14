@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.kakao',
     'rest_auth.registration',
 ]
 
@@ -79,6 +80,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ssamulham.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# SOCIALACCOUNT_LOGIN_ON_GET = True
+# # 로그인 완료 후 연결될 URL
+# LOGIN_REDIRECT_URL = ''
+# # 로그아웃 후 연결될 URL
+# ACCOUNT_LOGOUT_REDIRECT_URL = ''
+# # 로그아웃 요청 시 즉시 로그아웃 되도록
+# ACCOUNT_LOGOUT_ON_GET = True 
 
 TEMPLATES = [
     {
@@ -172,3 +186,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
     ],
 }
+
+AUTH_USER_MODEL = 'accounts.User'

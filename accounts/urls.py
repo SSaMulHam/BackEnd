@@ -1,11 +1,11 @@
 from django.urls import path, include
 from . import views 
 
-app_name='accounts'
+
 urlpatterns = [
     # 로그인
+    # path('', include('allauth.urls')),
     path('', include('rest_auth.urls')),
-    path('', include('allauth.urls')),
     # 회원가입 
     path('registration/', include('rest_auth.registration.urls')),
     # 프로필
